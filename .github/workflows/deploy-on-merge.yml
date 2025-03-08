@@ -1,0 +1,50 @@
+# Name of the workflow. This will be displayed in the GitHub Actions UI.
+name: Deploy to Render on Merge to Main
+
+# Trigger the workflow when there is a push to the `main` branch.
+# This typically happens when a feature branch is merged into `main`.
+on:
+  push:
+    branches:
+      - main
+
+# Define the jobs to be run in this workflow.
+jobs:
+  # Job ID: deploy
+  deploy:
+    # Display name of the job in the GitHub Actions UI.
+    name: Deploy to Render
+
+    # Specifies the type of virtual machine to run the job on.
+    # In this case, it will run on the latest version of Ubuntu.
+    runs-on: ubuntu-latest
+
+    # Steps are the individual tasks that will be executed as part of this job.
+    steps:
+      # Step 1: Checkout the repository code.
+      # This uses the official GitHub Actions checkout action (v4) to fetch the code.
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Install dependencies.
+      # This runs the `npm install` command to install all project dependencies.
+      - name: Install dependencies
+        run: npm install
+
+      # Step 3: Run tests.
+      # This runs the `npm run test` command to execute the project's test suite.
+      # This ensures the code is stable before deploying.
+      - name: Run tests
+        run: npm run test
+
+      # Step 4: Deploy to Render.
+      # This step deploys the application to Render using a deploy hook URL.
+      # The deploy hook URL is stored as a GitHub secret (`RENDER_DEPLOY_HOOK_URL`).
+      - name: Deploy to Render
+        env:
+          # The `DEPLOY_HOOK_URL` environment variable is set to the value of the GitHub secret.
+          DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+        run: |
+          # The `curl` command sends a POST request to the Render deploy hook URL
+          # to trigger the deployment.
+          curl -X POST "$DEPLOY_HOOK_URL"
