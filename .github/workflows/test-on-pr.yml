@@ -1,36 +1,12 @@
-# Name of the workflow. This will be displayed in the GitHub Actions UI.
-# It helps you identify what this workflow does. In this case, it runs "Component tests."
 name: Component tests
-
-# Trigger the workflow on any push event to the repository.
-# This means the workflow will run every time code is pushed to any branch.
 on: push
-
-# Define the jobs to be run in this workflow.
-# A job is a set of steps that run on the same virtual machine.
 jobs:
-  # Job ID: cypress-run
-  # This is a unique identifier for the job.
   cypress-run:
-    # Specifies the type of virtual machine to run the job on.
-    # In this case, it will run on the latest version of Ubuntu.
-    runs-on: ubuntu-latest
-
-    # Steps are the individual tasks that will be executed as part of this job.
+    runs-on: ubuntu-24.04
     steps:
-      # Step 1: Checkout the repository code.
-      # This uses the official GitHub Actions checkout action (v4) to fetch the code.
-      # Without this step, the workflow wouldn't have access to the codebase.
       - name: Checkout
         uses: actions/checkout@v4
-
-      # Step 2: Run Cypress tests.
-      # This uses the Cypress GitHub Action (v6) to execute Cypress tests.
-      # Cypress is a testing tool for web applications.
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          # The `component: true` option tells Cypress to run component tests.
-          # Component tests focus on testing individual components (e.g., React or Vue components)
-          # rather than full end-to-end (E2E) tests.
           component: true
