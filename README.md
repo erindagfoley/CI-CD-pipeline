@@ -2,6 +2,16 @@
 
 This application automates a Continuous Integration and Continuous Deployment (CI/CD) pipeline for your project. It ensures that all component tests pass before allowing merges into the `develop` branch and subsequently into the `main` branch. Once merged into `main`, the application automatically deploys to [Render](https://render.com/).
 
+## Table of Contents
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Setup](#setup)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Collaborators](#collaborators)
+- [Questions](#questions)
+
 ## Features
 
 - **Component Testing**: Runs component tests on every pull request to the `develop` branch.
@@ -108,13 +118,16 @@ Before using this application, ensure you have the following:
    - Make changes in a feature branch.
    - Create a pull request to the `develop` branch.
    - The CI/CD pipeline will automatically run component tests.
+   
+![Screenshot 2025-03-09 at 1 53 20 PM](https://github.com/user-attachments/assets/54975c68-cbc0-43a0-bc83-f1a8e8d747fa)
 
 2. **Merge to `develop`**:
    - If all tests pass, the pull request can be merged into `develop`.
 
 3. **Create a Pull Request to `main`**:
    - Once your changes are in `develop`, create a pull request to the `main` branch.
-   - The pipeline will run tests again and automatically merge if they pass.
+   - The pipeline will run tests again and automatically merge if they pass. See below:
+![Screenshot 2025-03-09 at 1 53 52 PM](https://github.com/user-attachments/assets/75329d9f-c511-4158-a279-b72db56fa6ec)
 
 4. **Auto-Deploy to Render**:
    - After merging into `main`, the application will automatically deploy to Render.
@@ -131,9 +144,16 @@ Contributions are welcome! Please follow these steps:
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## Support
+## Collaborators
 
-For any issues or questions, please open an issue in the GitHub repository or contact the maintainers.
+Thank you to edX bootcamps for the starter code in this project.
+
+## Questions
+
+If you have any questions or need further assistance, feel free to reach out:
+- **GitHub Profile**: https://github.com/erindagfoley  
+- **Email**: erindagfoley@gmail.com  
+
 
 ---
 
