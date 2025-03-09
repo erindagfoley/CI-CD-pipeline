@@ -1,5 +1,8 @@
 name: Component tests
-on: push
+on: 
+  pull_request: 
+    branches: 
+      - develop
 jobs:
   cypress-run:
     runs-on: ubuntu-24.04

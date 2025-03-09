@@ -96,3 +96,6 @@ const Quiz = () => {
 };
 
 export default Quiz;
+
+//random comment
+//random comment 2

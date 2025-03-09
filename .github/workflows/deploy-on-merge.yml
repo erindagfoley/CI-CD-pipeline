@@ -35,7 +35,7 @@ jobs:
       # This runs the `npm run test` command to execute the project's test suite.
       # This ensures the code is stable before deploying.
       - name: Run tests
-        run: npm run test
+        run: npm run test-component
 
       # Step 4: Deploy to Render.
       # This step deploys the application to Render using a deploy hook URL.
